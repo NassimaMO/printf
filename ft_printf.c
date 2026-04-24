@@ -39,7 +39,7 @@ static void ft_print_args(char c, int *count, va_list args)
 					   "0123456789ABCDEFG", 0, count);
 }
 
-static void ft_print_str(char *str, int *j, int *count)
+static void ft_print_str(const char *str, int *j, int *count)
 {
 	while (str[*j] && str[*j] != '%')
 	{
@@ -49,7 +49,7 @@ static void ft_print_str(char *str, int *j, int *count)
 	}
 }
 
-void ft_read_str(va_list args, char *str, int *no, int *count)
+void ft_read_str(va_list args, const char *str, int *no, int *count)
 {
 	int i;
 	int len;
@@ -81,7 +81,7 @@ int ft_printf(const char *str, ...)
 	no = 0;
 	count = 0;
 	va_start(args, str);
-	ft_read_str(args, (char *)str, &no, &count);
+	ft_read_str(args, str, &no, &count);
 	if (no % 2 == 1 && no != 1)
 		return (-1);
 	return (count);
