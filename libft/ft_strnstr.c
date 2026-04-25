@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnassiri <nnassiri@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/25 16:38:16 by nnassiri          #+#    #+#             */
-/*   Updated: 2026/04/25 16:38:18 by nnassiri         ###   ########.fr       */
+/*   Created: 2026/04/21 16:26:33 by nnassiri          #+#    #+#             */
+/*   Updated: 2026/04/21 16:26:33 by nnassiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
 
-static void	ft_putchar(char c, int fd, int *i)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	write(fd, &c, 1);
-	(*i)++;
-}
+	size_t	i;
+	size_t	j;
+	size_t	temp;
 
-void	ft_putnbr_fd(long long n, int fd, int *i)
-{
-	long long	nbr;
-
-	nbr = n;
-	if (fd == -1)
-		return ;
-	if (nbr < 0)
+	i = 0;
+	if (!little[i])
+		return ((char *)big);
+	while (big[i] && (i <= len || len == (size_t)-1))
 	{
-		nbr = -nbr;
-		ft_putchar('-', fd, i);
+		j = 0;
+		temp = i;
+		while (big[temp] == little[j])
+		{
+			temp++;
+			j++;
+		}
+		if (j >= (size_t)ft_strlen(little) && (temp <= len + 1 || \
+(len == (size_t) - 1 && big[temp])))
+			return (((char *)big) + i);
+		i++;
 	}
-	if (nbr >= 0 && nbr <= 9)
-		ft_putchar(nbr + 48, fd, i);
-	if (nbr > 9)
-	{
-		ft_putnbr_fd(nbr / 10, fd, i);
-		nbr = nbr % 10;
-		ft_putchar(nbr + 48, fd, i);
-	}
+	return (NULL);
 }

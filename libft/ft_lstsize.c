@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnassiri <nnassiri@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/25 16:37:58 by nnassiri          #+#    #+#             */
-/*   Updated: 2026/04/25 16:37:59 by nnassiri         ###   ########.fr       */
+/*   Created: 2026/04/21 16:23:18 by nnassiri          #+#    #+#             */
+/*   Updated: 2026/04/21 16:23:19 by nnassiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <stdarg.h>
-# include <unistd.h>
-# include <limits.h>
+int	ft_lstsize(t_list *lst)
+{
+	t_list	*cur;
+	int		i;
 
-# define FD_STDOUT 1
-
-# define PTR 1
-# define HEX 0
-
-int	ft_putnbr_base(unsigned long nbr, char *base, int n, int *i);
-int	ft_printf(const char *str, ...);
-
-#endif
+	i = 0;
+	cur = lst;
+	while (cur)
+	{
+		cur = cur->next;
+		i++;
+	}
+	return (i);
+}

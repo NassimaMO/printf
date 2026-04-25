@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnassiri <nnassiri@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/25 16:37:58 by nnassiri          #+#    #+#             */
-/*   Updated: 2026/04/25 16:37:59 by nnassiri         ###   ########.fr       */
+/*   Created: 2026/04/21 16:22:42 by nnassiri          #+#    #+#             */
+/*   Updated: 2026/04/21 16:22:44 by nnassiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <stdarg.h>
-# include <unistd.h>
-# include <limits.h>
-
-# define FD_STDOUT 1
-
-# define PTR 1
-# define HEX 0
-
-int	ft_putnbr_base(unsigned long nbr, char *base, int n, int *i);
-int	ft_printf(const char *str, ...);
-
-#endif
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	while (lst && f)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
+}

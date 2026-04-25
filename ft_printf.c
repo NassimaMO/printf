@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nnassiri <nnassiri@learner.42.tech>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/25 16:37:49 by nnassiri          #+#    #+#             */
+/*   Updated: 2026/04/25 16:37:51 by nnassiri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-static void ft_print_args_str(char c, int *count, va_list args)
+static void	ft_print_args_str(char c, int *count, va_list args)
 {
 	if (c == 'c')
 	{
@@ -16,7 +28,7 @@ static void ft_print_args_str(char c, int *count, va_list args)
 		ft_putstr_fd(va_arg(args, char *), FD_STDOUT, count);
 }
 
-static void ft_print_args_nbr(char c, int *count, va_list args)
+static void	ft_print_args_nbr(char c, int *count, va_list args)
 {
 	if (c == 'p')
 		ft_putnbr_base(va_arg(args, size_t), "0123456789abcdef", PTR, count);
@@ -27,16 +39,14 @@ static void ft_print_args_nbr(char c, int *count, va_list args)
 	else if (c == 'u')
 		ft_putnbr_fd(va_arg(args, unsigned int), FD_STDOUT, count);
 	else if (c == 'x')
-		ft_putnbr_base(va_arg(args, size_t),
-					   "0123456789abcdef", HEX, count);
+		ft_putnbr_base(va_arg(args, size_t), "0123456789abcdef", HEX, count);
 	else if (c == 'X')
-		ft_putnbr_base(va_arg(args, size_t),
-					   "0123456789ABCDEF", HEX, count);
+		ft_putnbr_base(va_arg(args, size_t), "0123456789ABCDEF", HEX, count);
 }
 
-void ft_read_str(va_list args, const char *str, int len, int *count)
+void	ft_read_str(va_list args, const char *str, int len, int *count)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < len)
@@ -57,10 +67,10 @@ void ft_read_str(va_list args, const char *str, int len, int *count)
 	}
 }
 
-int ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
-	va_list args;
-	int count;
+	va_list	args;
+	int		count;
 
 	count = 0;
 	va_start(args, str);

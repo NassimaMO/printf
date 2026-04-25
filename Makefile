@@ -13,7 +13,7 @@ all:			$(NAME)
 $(NAME):		$(OBJS)
 	ar crs $@ $(OBJS)
 
-%.o:			%.c
+%.o:			%.c ft_printf.h
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
