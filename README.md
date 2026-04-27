@@ -29,7 +29,7 @@ make re       # fclean + all
 Link the library when compiling your program:
 
 ```bash
-cc main.c -L. -lftprintf -L/libft -lft -o my_program
+cc main.c -L. -lftprintf -Llibft -lft -o my_program
 ```
 
 Include the header in your source files:
