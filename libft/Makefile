@@ -20,16 +20,16 @@ OBJS			= $(SRCS:.c=.o)
 all:			$(NAME)
 
 $(NAME):		$(OBJS)
-	@ar crs $@ $(OBJS)
+	ar crs $@ $(OBJS)
 
 %.o:			%.c libft.h
-	@$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	@rm -rf $(OBJS)
+	rm -rf $(OBJS)
 
 fclean:			clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re:				fclean all
 
