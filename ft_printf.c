@@ -16,16 +16,16 @@ static void	ft_print_args_str(char c, int *count, va_list args)
 {
 	if (c == 'c')
 	{
-		ft_putchar_fd(va_arg(args, int), FD_STDOUT);
+		ft_putchar(va_arg(args, int), NULL);
 		(*count)++;
 	}
 	else if (c == '%')
 	{
-		ft_putchar_fd('%', FD_STDOUT);
+		ft_putchar('%', NULL);
 		(*count)++;
 	}
 	else if (c == 's')
-		ft_putstr_fd(va_arg(args, char *), FD_STDOUT, count);
+		ft_putstr(va_arg(args, char *), count);
 }
 
 static void	ft_print_args_nbr(char c, int *count, va_list args)
@@ -33,11 +33,11 @@ static void	ft_print_args_nbr(char c, int *count, va_list args)
 	if (c == 'p')
 		ft_putnbr_base(va_arg(args, size_t), "0123456789abcdef", PTR, count);
 	else if (c == 'd')
-		ft_putnbr_fd(va_arg(args, int), FD_STDOUT, count);
+		ft_putnbr(va_arg(args, int), count);
 	else if (c == 'i')
-		ft_putnbr_fd(va_arg(args, int), FD_STDOUT, count);
+		ft_putnbr(va_arg(args, int), count);
 	else if (c == 'u')
-		ft_putnbr_fd(va_arg(args, unsigned int), FD_STDOUT, count);
+		ft_putnbr(va_arg(args, unsigned int), count);
 	else if (c == 'x')
 		ft_putnbr_base(va_arg(args, size_t), "0123456789abcdef", HEX, count);
 	else if (c == 'X')
@@ -53,7 +53,7 @@ void	ft_read_str(va_list args, const char *str, int len, int *count)
 	{
 		while (str[i] && str[i] != '%')
 		{
-			ft_putchar_fd(str[i], 1);
+			ft_putchar(str[i], NULL);
 			(*count)++;
 			i++;
 		}

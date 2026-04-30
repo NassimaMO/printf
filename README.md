@@ -4,7 +4,7 @@
 
 ## Description
 
-`ft_printf` is a partial reimplementation of the standard C library `printf()` function, built as a static library (`libftprintf.a`). The goal is to understand variadic functions in C — functions that accept a variable number of arguments — and to produce a robust, extensible format string parser. The library handles the most common conversion specifiers and integrates with `libft`. Once validated, it can be added to your `libft` and reused across all future 42 projects.
+`ft_printf` is a partial reimplementation of the standard C library `printf()` function, built as a static library (`libftprintf.a`). The goal is to understand variadic functions in C — functions that accept a variable number of arguments — and to produce a robust, extensible format string parser. The library handles the most common conversion specifiers.
 
 ## Instructions
 
@@ -14,13 +14,13 @@
 make
 ```
 
-This produces `libftprintf.a` at the root of the repository. The library depends on `libft` functions located in the `libft/` subdirectory.
+This produces `libftprintf.a` at the root of the repository.
 
 Other available rules:
 
 ```bash
 make clean    # removes object files
-make fclean   # removes object files and libft.a
+make fclean   # removes object files and libftprintf.a
 make re       # fclean + all
 ```
 
@@ -29,7 +29,7 @@ make re       # fclean + all
 Link the library when compiling your program:
 
 ```bash
-cc main.c -L. -lftprintf -Llibft -lft -o my_program
+cc main.c -L. -lftprintf -o my_program
 ```
 
 Include the header in your source files:
